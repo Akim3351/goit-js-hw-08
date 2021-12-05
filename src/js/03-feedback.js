@@ -18,10 +18,11 @@ refs.feedBackForm.addEventListener('submit', onFormSubmit);
 populateForm();
 
 function populateForm() {
-    const savedFeedback = JSON.parse(localStorage.getItem('feedback'));
-    refs.emailInput.value = savedFeedback.email;
-    refs.msgArea.value = savedFeedback.msg;
-
+    if (localStorage.getItem('feedback')) {
+        const savedFeedback = JSON.parse(localStorage.getItem('feedback'));
+        refs.emailInput.value = savedFeedback.email;
+        refs.msgArea.value = savedFeedback.msg;
+    }
 };
 
 function saveFormData() {

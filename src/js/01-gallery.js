@@ -20,6 +20,7 @@ function createGalleryMarkup(galleryItems) {
                     class="gallery__image"
                     src="${item.preview}"
                     alt="${item.description}"
+                    
                 />
             </a>
         `
@@ -29,19 +30,10 @@ function createGalleryMarkup(galleryItems) {
     gallery.innerHTML = markup;
 };
 
-gallery.addEventListener('click', openModal);
-function openModal(event) {
 
-        event.preventDefault();
+const galleryModal = new SimpleLightbox('.gallery a');
 
-        if (event.target.nodeName !== 'IMG') {
-            return
-        }
-
-    const galleryModal = new SimpleLightbox('.gallery a');
-    console.log('открыли!!');
-    galleryModal.on("show.simplelightbox", function () {
-        galleryModal.options.captionDelay = 250;
-        galleryModal.options.captionsData = 'alt';
-    })
-};
+galleryModal.on("show.simplelightbox", function () {
+    galleryModal.options.captionDelay = 250;
+    galleryModal.options.captionsData = 'alt';
+});
